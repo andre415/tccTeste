@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: idleenemy
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 551cfda239fbf0e458e54a4d045567ad, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 184baa8ee09a88d4481e558ad2628784, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: 6c94c7680eb868246b020b830a5df0e2, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 74b3568f9ce98a447ae8a2b21e302459, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: c5487634c7175234f81aa7f1d0d01f48, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: 21c7a87dd5f2b4a45b0d6b7f92d895e7, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 2ec4c8a3851870a418b88a9715126daf, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: 4ed3983d13f372142a3f97cac65b886b, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 7a27e15adbf547f458b87b7d83907929, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 551cfda239fbf0e458e54a4d045567ad, type: 3}
+    - {fileID: 21300000, guid: 184baa8ee09a88d4481e558ad2628784, type: 3}
+    - {fileID: 21300000, guid: 6c94c7680eb868246b020b830a5df0e2, type: 3}
+    - {fileID: 21300000, guid: 74b3568f9ce98a447ae8a2b21e302459, type: 3}
+    - {fileID: 21300000, guid: c5487634c7175234f81aa7f1d0d01f48, type: 3}
+    - {fileID: 21300000, guid: 21c7a87dd5f2b4a45b0d6b7f92d895e7, type: 3}
+    - {fileID: 21300000, guid: 2ec4c8a3851870a418b88a9715126daf, type: 3}
+    - {fileID: 21300000, guid: 4ed3983d13f372142a3f97cac65b886b, type: 3}
+    - {fileID: 21300000, guid: 7a27e15adbf547f458b87b7d83907929, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.75
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events: []
