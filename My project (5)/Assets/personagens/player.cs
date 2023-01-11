@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class player : personagem
 {
- 
+
     public override void Start()
     {
         base.Start();
@@ -13,21 +13,14 @@ public class player : personagem
     public override void Update()
     {
         base.Update();
-        direction = Input.GetAxisRaw("horizontal");
+        direction = Input.GetAxisRaw("h" + "orizontal");
         Vertical = Input.GetAxisRaw("Vertical");
 
         HandleMovement();
         HandleJump();
         HandleDash();
         ExecutarJetpack();
-       
         layers();
-
-
-
-
-
-
     }
 
     public override void HandleMovement()
@@ -38,12 +31,10 @@ public class player : personagem
         virar(direction);
     }
 
-
     protected override void HandleJump()
     {
         if (Input.GetButtonDown("Jump"))
         {
-
             if (nochao)
             {
                 jumpTimeCount = jumpTime;
@@ -64,8 +55,8 @@ public class player : personagem
         }
 
         // quando vc esta pulando e segura o botão aumenta seu pulo
-        if (Input.GetButton("Jump") && !jumpstoped && (jumpTimeCount > 0)) {
-
+        if (Input.GetButton("Jump") && !jumpstoped && (jumpTimeCount > 0))
+        {
 
             upMove(jumpforce);
             jumpTimeCount -= Time.deltaTime;
@@ -83,17 +74,19 @@ public class player : personagem
 
     }
 
-
     protected override void HandFire()
     {
 
-        if (Input.GetButtonDown("Fire2")) {
-            
-            if(Vertical == 1)
+        if (Input.GetButtonDown("Fire2"))
+        {
+
+            // esses if identificam qual direcinal o jogador esta apertando para definir a direção do tiro
+            if (Vertical == 1)
             {
                 upFire();
 
-            }else if (Vertical == -1)
+            }
+            else if (Vertical == -1)
             {
                 DownFire();
 
@@ -103,14 +96,15 @@ public class player : personagem
                 fire();
             }
 
-           
-            print("ff");
+
+
         }
     }
 
     protected override void HandleDash()
     {
-        if (dashdelay > 0) {
+        if (dashdelay > 0)
+        {
 
             dashdelay -= Time.deltaTime;
         }
@@ -118,25 +112,23 @@ public class player : personagem
         {
             if (dashTimeCount > 0)
             {
-
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButton("Fire1"))
                 {
-
                     isdash = true;
-
                     dash();
+                }
 
-
-
+                else
+                {
+                    Move();
                 }
 
                 if (isdash == true)
                 {
-
                     dashTimeCount -= Time.deltaTime;
                 }
-
             }
+
             else
             {
                 dashTimeCount = dashTime;
@@ -144,30 +136,28 @@ public class player : personagem
                 Move();
                 dashdelay++;
             }
-
         }
-
-
-
-
     }
     protected void ExecutarJetpack()
     {
-
         if (Input.GetButton("Fire3"))
         {
-
-
             Jetpack();
+        }
+        else
+        {
+            jetTimeCount = 0;
+            isjetfall = false;
+            isjet = false;
+            jetForce = 0;
+        }
+
+        if (Input.GetButtonUp("Fire3") && isjet == true)
+        {
+        }
 
 
-        } else { jetForce = 0; }
     }
-
-    protected void UpOrDown()
-    {
-
-    } 
 }
       
         

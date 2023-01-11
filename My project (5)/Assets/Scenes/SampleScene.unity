@@ -340,10 +340,10 @@ MonoBehaviour:
   jumpstoped: 0
   jetTime: 1
   jetTimeCount: 0
-  jetUpSpeed: 0
+  jetUpSpeed: 5
   jetFallSpeed: 5
   jetForce: 5
-  isjet: 1
+  isjet: 0
   bullet: {fileID: 971159654}
   firePoint: {fileID: 2086305316}
   rtFirePoint:
