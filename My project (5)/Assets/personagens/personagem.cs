@@ -55,14 +55,21 @@ public abstract class personagem : MonoBehaviour
     [SerializeField] protected quaternion rtFirePoint;
     [SerializeField] protected float bulletSpeed = 1;
     [SerializeField] protected float bulletDamage = 1;
+    [SerializeField] protected Transform combatAtack;
+    [SerializeField] protected float attackRange = 0.5f;
+    [SerializeField] protected LayerMask layerPersonagem;
+    [SerializeField] protected float attackRate = 2f;
+    [SerializeField] protected float attackTime = 0f;
     GameObject LastBulet;
 
    [Header("Estatos dos personagens")]
     [SerializeField] protected float hp;
     [SerializeField] public float damage;
 
-    protected Rigidbody2D rb;
+    [SerializeField] protected Rigidbody2D rb;
     protected Animator myAnimator;
+    [SerializeField] protected float contador;
+    [SerializeField] bool empurrado;
     #endregion
 
     #region monos  
@@ -117,9 +124,9 @@ public abstract class personagem : MonoBehaviour
     }
 
     protected void Jetpack() {
+        if (nochao == false) isjet = true;
         if (jetTimeCount <= jetTime && isjetfall == false)// faz o jetpack acelerar
         {
-            isjet = true;
             jetForce = jetTimeCount * jetUpSpeed;
             jetTimeCount += Time.deltaTime;
             upMove(jetForce);
@@ -143,7 +150,12 @@ public abstract class personagem : MonoBehaviour
             upMove(jetForce);
         }
 
-        else if (nochao) jetTimeCount = 0;// reseta o contador do jet pack
+        else if (nochao)
+        {
+            jetTimeCount = 0;
+            isjetfall = false;
+            isjet = false;
+        }
 
     }
 
@@ -171,11 +183,25 @@ public abstract class personagem : MonoBehaviour
         blStatsSet(LastBulet);
     }
 
-    
+
 
     #endregion
 
     #region subMecanicas
+
+    public void Empurrar(float forcaEmpurrar)
+    {
+
+
+            if (contador < 1)
+            {
+                rb.velocity = new Vector2(forcaEmpurrar, rb.velocity.y);
+                contador += Time.deltaTime;
+            }
+            else rb.velocity = new Vector2(0, rb.velocity.y); empurrado = false;
+
+
+    }
 
     protected virtual void HandleDash() { }
     protected virtual void HandFire() { }
@@ -197,6 +223,12 @@ public abstract class personagem : MonoBehaviour
     public void TomarDano(float danoRecebido)
     {
         hp -= danoRecebido;
+
+        if(danoRecebido > 5)
+        {
+            Empurrar(2);
+        }
+
     }
 
     protected void Morrer()
@@ -209,6 +241,8 @@ public abstract class personagem : MonoBehaviour
     protected void OnDrawGizmos()
     {
         Gizmos.DrawSphere(fiscaldechao.position, radOCircle);
+        Gizmos.DrawSphere(combatAtack.position, radOCircle);
+        Gizmos.DrawSphere(combatAtack.position, attackRange);
     }
 
     protected void layers() // define o layer que o personagem esta (serve só pra animação)
@@ -223,6 +257,29 @@ public abstract class personagem : MonoBehaviour
         }
     }
     
+    protected void Attack(float dano)
+    {
+        if (isjump > 1)
+        {
+
+        }
+        else
+        {
+            // Gatilho do ataque corpo a corpo
+            myAnimator.SetTrigger("AnyAttack");
+
+            // Detectar personagens
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(combatAtack.position, attackRange, layerPersonagem);
+
+            // Dano aos inimigos
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponentInChildren<personagem>().TomarDano(dano);
+
+            }
+        }
+    }
+
     #endregion 
 
 }

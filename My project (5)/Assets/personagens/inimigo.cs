@@ -8,13 +8,15 @@ public class inimigo : personagem
     player pl ;
     [SerializeField] protected float i;
     [SerializeField] protected float j;
+    
 
     // Start is called before the first frame update
     void Start()
     {
          pl = FindObjectOfType<player>();
         print(pl.transform.position.x);
-        
+        base.Start();
+
     }
 
     // Update is called once per frame
@@ -28,6 +30,9 @@ public class inimigo : personagem
 
         Morrer();
     }
+
+   
+
     protected virtual void HandleDash() {} 
     protected virtual void HandFire() {
         // os if identificam a altura do player e com base nisso decidem a direção do tiro do inimigo

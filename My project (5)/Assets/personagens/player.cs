@@ -1,9 +1,10 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class player : personagem
 {
+    [SerializeField] protected float carregarAtaque;
 
     public override void Start()
     {
@@ -21,6 +22,7 @@ public class player : personagem
         HandleDash();
         ExecutarJetpack();
         layers();
+        ExecutarAtaque();
     }
 
     public override void HandleMovement()
@@ -144,19 +146,33 @@ public class player : personagem
         {
             Jetpack();
         }
-        else
+
+
+
+    }
+    protected void ExecutarAtaque()
+    {
+        if (Input.GetButton("A"))
         {
-            jetTimeCount = 0;
-            isjetfall = false;
-            isjet = false;
-            jetForce = 0;
-        }
+            carregarAtaque += Time.deltaTime;
 
-        if (Input.GetButtonUp("Fire3") && isjet == true)
+        }
+        else if (!Input.GetButtonUp("A")) carregarAtaque = 0;
+        if (Time.time >= attackTime)
         {
+            
+
+            if (Input.GetButtonUp("A") && carregarAtaque < 1)
+            {
+                Attack(05);
+                attackTime = Time.time + 2f / attackRate;
+            }
+            else if (Input.GetButtonUp("A") && carregarAtaque >= 1) Attack(10);
+           
+
+           
+
         }
-
-
     }
 }
       
